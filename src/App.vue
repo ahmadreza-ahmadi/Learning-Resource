@@ -30,9 +30,11 @@ export default {
 </script>
 
 <template>
-  <TheHeader />
+  <div class="font-inter">
+    <TheHeader />
 
-  <main class="max-w-screen-sm mx-auto p-5">
-    <ResourceList :resources="storedResources" />
-  </main>
+    <main class="max-w-screen-sm mx-auto p-5 sm:p-7">
+      <ResourceList :resources="storedResources" />
+    </main>
+  </div>
 </template>
