@@ -7,7 +7,7 @@ export default {
   },
 
   props: {
-    resources: Object,
+    resources: Array,
   },
 }
 </script>
