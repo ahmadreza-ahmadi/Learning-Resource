@@ -11,6 +11,7 @@ export default {
   provide() {
     return {
       resources: this.storedResources,
+      addResource: this.addResource,
     }
   },
 
@@ -31,6 +32,12 @@ export default {
         },
       ],
     }
+  },
+
+  methods: {
+    addResource(newResource) {
+      this.storedResources.unshift(newResource)
+    },
   },
 }
 </script>
