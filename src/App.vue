@@ -31,7 +31,7 @@ export default {
 
 <template>
   <div class="font-inter">
-    <TheHeader />
+    <TheHeader title="Learning Resources" />
 
     <main class="max-w-screen-sm mx-auto p-5 sm:p-7">
       <ResourceList :resources="storedResources" />
