@@ -2,7 +2,7 @@
 export default {
   props: {
     resource: {
-      type: String,
+      type: Object,
       required: true,
     },
   },
@@ -14,11 +14,13 @@ export default {
     <BaseCard>
       <header class="flex items-center justify-between">
         <h3 class="text-2xl font-bold my-2">{{ resource.title }}</h3>
-        <button
-          class="bg-gray-50 text-red-500 text-sm px-2 py-1 rounded-md border border-gray-200"
+        <BaseButton
+          variant="secondary"
+          size="sm"
+          rounded="md"
+          class="!text-red-500"
+          >Delete</BaseButton
         >
-          Delete
-        </button>
       </header>
       <p class="font-medium text-lg my-2">{{ resource.description }}</p>
       <nav>
