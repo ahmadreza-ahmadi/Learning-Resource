@@ -1,11 +1,17 @@
 <script>
 import TheHeader from './components/layout/TheHeader.vue'
-import ResourceList from './components/resources/ResourceList.vue'
+import TheResources from './components/layout/TheResources.vue'
 
 export default {
   components: {
     TheHeader,
-    ResourceList,
+    TheResources,
+  },
+
+  provide() {
+    return {
+      resources: this.storedResources,
+    }
   },
 
   data() {
@@ -34,7 +40,7 @@ export default {
     <TheHeader title="Learning Resources" />
 
     <main class="max-w-screen-sm mx-auto p-5 sm:p-7">
-      <ResourceList :resources="storedResources" />
+      <TheResources />
     </main>
   </div>
 </template>
