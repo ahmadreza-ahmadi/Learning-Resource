@@ -7,6 +7,7 @@ export default {
       enteredTitle: '',
       enteredDescription: '',
       enteredLink: '',
+      inputIsInvalid: false,
     }
   },
 
@@ -14,9 +15,9 @@ export default {
     newResource() {
       return {
         id: new Date().toISOString(),
-        title: this.enteredTitle,
-        description: this.enteredDescription,
-        link: this.enteredLink,
+        title: this.enteredTitle.trim(),
+        description: this.enteredDescription.trim(),
+        link: this.enteredLink.trim(),
       }
     },
 
@@ -28,6 +29,7 @@ export default {
   methods: {
     submitForm() {
       if (!this.enteredTitle || !this.enteredLink) {
+        this.inputIsInvalid = true
         return
         // TODO: Show a modal when an error occured
       }
@@ -42,11 +44,30 @@ export default {
       this.enteredDescription = ''
       this.enteredLink = ''
     },
+
+    confirmError() {
+      this.inputIsInvalid = false
+    },
   },
 }
 </script>
 
 <template>
+  <BaseDialog v-if="inputIsInvalid" @close="confirmError">
+    <template #header>
+      <h2 class="text-2xl font-bold">Invalid Input</h2>
+    </template>
+    <template #body>
+      <p>Unfortunately, at least one input value is invalid.</p>
+      <p>
+        Please check all inputs and make sure you enter at least a few characters into each input
+        field.
+      </p>
+    </template>
+    <template #actions>
+      <BaseButton size="lg" @click="confirmError">Okay</BaseButton>
+    </template>
+  </BaseDialog>
   <BaseCard>
     <form action="#" @submit.prevent="submitForm" class="flex flex-col gap-4">
       <fieldset class="flex flex-col gap-2">
