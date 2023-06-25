@@ -52,5 +52,7 @@ export default {
     >
   </BaseCard>
 
-  <component :is="selectedTab"></component>
+  <keep-alive>
+    <component :is="selectedTab"></component>
+  </keep-alive>
 </template>
