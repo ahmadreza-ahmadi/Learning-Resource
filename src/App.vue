@@ -1,4 +1,5 @@
 <script>
+import { computed } from 'vue'
 import TheHeader from './components/layout/TheHeader.vue'
 import TheResources from './components/layout/TheResources.vue'
 
@@ -10,8 +11,9 @@ export default {
 
   provide() {
     return {
-      resources: this.storedResources,
+      resources: computed(() => this.storedResources),
       addResource: this.addResource,
+      deleteResource: this.deleteResource,
     }
   },
 
@@ -37,6 +39,14 @@ export default {
   methods: {
     addResource(newResource) {
       this.storedResources.unshift(newResource)
+    },
+
+    deleteResource(resourceId) {
+      const filteredResources = this.storedResources.filter(
+        (resource) => resource.id !== resourceId
+      )
+
+      this.storedResources = filteredResources
     },
   },
 }

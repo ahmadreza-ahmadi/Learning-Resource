@@ -1,5 +1,7 @@
 <script>
 export default {
+  inject: ['deleteResource'],
+
   props: {
     resource: {
       type: Object,
@@ -19,6 +21,7 @@ export default {
           size="sm"
           rounded="md"
           class="!text-red-500"
+          @click="deleteResource(resource.id)"
           >Delete</BaseButton
         >
       </header>
